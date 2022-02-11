@@ -1,5 +1,7 @@
 #userInput{
     border-radius: 20px;
-    color: white;
-    
+    color: white; 
+}
+span:hover{
+   color: white;
 }
