@@ -71,7 +71,7 @@ const Trending_apiUrl= 'https://api.themoviedb.org/3/trending/movie/day?api_key=
 axios
 .get(Trending_apiUrl)
 .then ((res) =>{ console.log(res.data.results)
-  document.getElementById("Trending").innerHTML = res.data.results.map(item=>
+  document.getElementById("trend").innerHTML = res.data.results.map(item=>
     `<div class="col-6 col-md-3 mb-4">
     <div class="card border-0">
     <img src=${imgpath+item.poster_path}>
