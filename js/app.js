@@ -1,5 +1,5 @@
 const apiKey= `085893799663f0096f9d370baf640f22`;
-
+const imgPath = "https://image.tmdb.org/t/p/w342";
 let watchedList=[];
 let favoriteList=[];
 
@@ -43,7 +43,7 @@ function moviesCat(id,card){
 
 
 //------------------ Get Movies by search ------------------------
-const form = document.querySelector(".bysearch form");
+const form = document.querySelector("userInput");
 form.addEventListener("submit",(event)=>{
   event.preventDefault();
   let myInput = document.querySelector("#myInput").value;
