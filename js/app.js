@@ -67,3 +67,22 @@ form.addEventListener("submit",(event)=>{
 })
 
 //-----------------------Get Trending Movies---------------------------------
+const Trending_apiUrl= 'https://api.themoviedb.org/3/trending/movie/day?api_key=085893799663f0096f9d370baf640f22'
+axios
+.get(Trending_apiUrl)
+.then ((res) =>{ console.log(res.data.results)
+  document.getElementById("Trending").innerHTML = res.data.results.map(item=>
+    `<div class="col-6 col-md-3 mb-4">
+    <div class="card border-0">
+    <img src=${imgpath+item.poster_path}>
+    <div class="text-center bg-black justify-content-md-between align-items-center">
+    <a class="btn test"data-bs-toggle="modal"data-bs-target="#theModalBox" onclick="MoviesDetails(${item.id}">Details</a>
+    <a><i class="far fa-heart btn p-1 test" onclick="FavList(${item.id}"></i></a>
+    <a><i class="fas fa-plus btn p-1 test" onclick="watchList(${item.id}"></i></a>
+    </div>
+    </div>
+    </div>`
+  ).join('')
+})
+
+
