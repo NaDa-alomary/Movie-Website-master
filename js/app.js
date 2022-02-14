@@ -1,5 +1,5 @@
 const apiKey= `085893799663f0096f9d370baf640f22`;
-
+const imgPath = "https://image.tmdb.org/t/p/w342";
 let watchedList=[];
 let favoriteList=[];
 
@@ -44,8 +44,13 @@ function moviesCat(id,card){
 
 
 //------------------ Get Movies by search ------------------------
+<<<<<<< HEAD
 const searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener("click",(event)=>{
+=======
+const form = document.querySelector("userInput");
+form.addEventListener("submit",(event)=>{
+>>>>>>> 1faf1e327d568ab901da9e8bd60673b1c1ed2f23
   event.preventDefault();
   console.log("input")
   let myInput = document.getElementById("userInput").value;
@@ -71,6 +76,7 @@ searchBtn.addEventListener("click",(event)=>{
 //-----------------------Get Trending Movies---------------------------------
 
 axios
+<<<<<<< HEAD
 .get('https://api.themoviedb.org/3/trending/movie/day?api_key=085893799663f0096f9d370baf640f22')
 .then(function (response) {
   // handle success
@@ -88,5 +94,21 @@ axios
       `
       )
 
+=======
+.get(Trending_apiUrl)
+.then ((res) =>{ console.log(res.data.results)
+  document.getElementById("trend").innerHTML = res.data.results.map(item=>
+    `<div class="col-6 col-md-3 mb-4">
+    <div class="card border-0">
+    <img src=${imgpath+item.poster_path}>
+    <div class="text-center bg-black justify-content-md-between align-items-center">
+    <a class="btn test"data-bs-toggle="modal"data-bs-target="#theModalBox" onclick="MoviesDetails(${item.id}">Details</a>
+    <a><i class="far fa-heart btn p-1 test" onclick="FavList(${item.id}"></i></a>
+    <a><i class="fas fa-plus btn p-1 test" onclick="watchList(${item.id}"></i></a>
+    </div>
+    </div>
+    </div>`
+  ).join('')
+>>>>>>> 1faf1e327d568ab901da9e8bd60673b1c1ed2f23
 })
 
