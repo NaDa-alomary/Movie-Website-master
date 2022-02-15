@@ -85,4 +85,47 @@ axios
   ).join('')
 })
 
+//-----------------------model Detels---------------------------------
 
+function MoviesDetails (movie_id){
+console. log(movie_id,"id");
+axios
+.get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=085893799663f0096f9d370baf640f22&append_to_response=videos,similar,credits`)
+.then ((res) =>{console. log(res. data)
+let item = res.data;
+let char = item.credits.cast;
+var charNames = [];
+for(var i = 0; i < 4; i++){
+charNames. push(char[i].name);
+}
+let genre = res.data.genres;
+var genreList = genre.map((genre) =>{
+return genre.name;
+});
+let video = res.data.videos.results;
+console.log (video);
+let similarMovies = res.data.similar.results;
+console. log(similarMovies);
+var similarMoviesList = similarMovies.map((element)=>{
+return element;
+})
+document.getElementById("TheModalBox").innerHTML=
+`
+<div class="modal-dialog modal-xl modal-dialog-centered "">
+<div class="modal-content bg-darkGray p-4 text-center">
+<h2>${item. title}
+<div type="button" class=" float-end " data-bs-dismiss="modal" aria-label="Close">
+<i class="fas fa-times white-text" aria-hidden="true"></i>
+</div>
+</h2>
+<p>${item.release_data} , ${genreList} </p>
+<p>${item.overview}</p>
+<p>Cast : ${charNames}</p>
+<div>
+<p class="fs-3">vido Clip<p>
+<iframe height="400" width="100%"src="https://www.youtube.com/embed/${video[0].key}"</iframe>
+</div>
+</div>
+</div>`;
+})
+}
