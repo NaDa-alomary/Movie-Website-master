@@ -6,7 +6,7 @@ let favoriteList=[];
 
 
 
-//-------------------------const imgPath----------------------//
+//
 
 let actionCard= document.getElementById("Action");
 moviesCat(28,actionCard)
@@ -27,7 +27,7 @@ function moviesCat(id,card){
     console.log(response.data.results);
     card.innerHTML = response.data.results.map(item =>
         `
-        <div class="card" style="width: 18rem;">
+        <div class="card my-3 mx-4" style="width: 18rem;">
           <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="card-img-top" >
           <div class="card-body bg-dark">
             <a href="#" class="btn text-white"><i class="far fa-bookmark"></i></a>
@@ -44,13 +44,8 @@ function moviesCat(id,card){
 
 
 //------------------ Get Movies by search ------------------------
-<<<<<<< HEAD
 const searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener("click",(event)=>{
-=======
-const form = document.querySelector("userInput");
-form.addEventListener("submit",(event)=>{
->>>>>>> 1faf1e327d568ab901da9e8bd60673b1c1ed2f23
   event.preventDefault();
   console.log("input")
   let myInput = document.getElementById("userInput").value;
@@ -60,7 +55,7 @@ form.addEventListener("submit",(event)=>{
   .then ((res) =>{ console.log(res.data.results)
     document.getElementById("searchedMovie").innerHTML = res.data.results.map(item=>
       `
-      <div class="card" style="width: 18rem;">
+      <div class="card my-3 mx-4" style="width: 18rem;">
         <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="card-img-top" >
         <div class="card-body bg-dark">
           <a href="#" class="btn text-white"><i class="far fa-bookmark"></i></a>
@@ -76,39 +71,65 @@ form.addEventListener("submit",(event)=>{
 //-----------------------Get Trending Movies---------------------------------
 
 axios
-<<<<<<< HEAD
 .get('https://api.themoviedb.org/3/trending/movie/day?api_key=085893799663f0096f9d370baf640f22')
 .then(function (response) {
   // handle success
   console.log(response.data.results);
   document.getElementById("trend").innerHTML = response.data.results.map(item =>
       `
-      <div class="card" style="width: 18rem;">
+      <div class="card my-3 mx-4" style="width: 18rem;">
         <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="card-img-top" >
         <div class="card-body bg-dark">
           <a href="#" class="btn text-white"><i class="far fa-bookmark"></i></a>
           <a href="#" class="btn text-white"><i class="far fa-heart"></i></a>
-          <a href="#" class="btn text-white">Details</a>
+          <a href="#" class="btn text-white"id="detailsBox">Details</a>
         </div>
       </div>
       `
       )
-
-=======
-.get(Trending_apiUrl)
-.then ((res) =>{ console.log(res.data.results)
-  document.getElementById("trend").innerHTML = res.data.results.map(item=>
-    `<div class="col-6 col-md-3 mb-4">
-    <div class="card border-0">
-    <img src=${imgpath+item.poster_path}>
-    <div class="text-center bg-black justify-content-md-between align-items-center">
-    <a class="btn test"data-bs-toggle="modal"data-bs-target="#theModalBox" onclick="MoviesDetails(${item.id}">Details</a>
-    <a><i class="far fa-heart btn p-1 test" onclick="FavList(${item.id}"></i></a>
-    <a><i class="fas fa-plus btn p-1 test" onclick="watchList(${item.id}"></i></a>
-    </div>
-    </div>
-    </div>`
-  ).join('')
->>>>>>> 1faf1e327d568ab901da9e8bd60673b1c1ed2f23
 })
 
+//-----------------------model Detels---------------------------------
+//function MoviesDetails (movie_id){
+//  console. log(movie_id,"id");
+//  axios
+//  .get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=085893799663f0096f9d370baf640f22&append_to_response=videos,similar,credits`)
+//  .then ((res) =>{console. log(res. data)
+//  let item = res.data;
+//  let char = item.credits.cast;
+//  var charNames = [];
+//  for(var i = 0; i < 4; i++){
+//    charNames. push(char[i].name);
+//  }
+//  let genre = res.data.genres;
+//  var genreList = genre.map((genre) =>{
+//    return genre.name;
+//  });
+//  let video = res.data.videos.results;
+//  console.log (video);
+//  let similarMovies = res.data.similar.results;
+//  console. log(similarMovies);
+//  var similarMoviesList = similarMovies.map((element)=>{
+//    return element;
+//  })
+//  `
+//  <div class="modal-dialog modal-xl modal-dialog-centered "">
+//    <div class="modal-content bg-darkGray p-4 text-center">
+//      <h2>${item. title}
+//      <div type="button" class=" float-end " data-bs-dismiss="modal" aria-label="Close">
+//      <i class="fas fa-times white-text" aria-hidden="true"></i>
+//      </div>
+//      </h2>
+//      <p>${item.release_data} , ${genreList} </p>
+//      <p>${item.overview}</p>
+//      <p>Cast : ${charNames}</p>
+//      <div>
+//      document.getElementById("detailsBox").innerHTML=
+//    <p class="fs-3">vido Clip<p>
+//    <iframe height="400" width="100%"src="https://www.youtube.com/embed/${video[0].key}"</iframe>
+//    </div>
+//  </div>
+//  </div>`;
+//  })
+//  }
+//
