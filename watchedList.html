@@ -15,40 +15,38 @@ crossorigin="anonymous"></script>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg bg-dark">
+  
+  <nav class="navbar navbar-expand-lg bg-dark p-2">
     <div class="container-fluid">
       <a class="navbar-brand " href="./index.html">
         <img src="./img/netflix_logo_icon_170918.svg" alt="" width="120" height="40">
       </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon bg-light"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
       <!-- Navbar Search-->
-      <div class="">
-        <form class="input-group m-4">
-          <input type="text" class="form-control bg-dark border-1 p-2" id="userInput" placeholder="Search for..." aria-label="Search" aria-describedby="addon-wrapping">
-          <span class="input-group-text bg-dark border-0" type="submit" ><i class="fas fa-search text-muted"></i></span>
-        </form>
-      </div>
+      <li class="nav-item">
+        <div class="">
+          <form class="input-group "id="searchBtn">
+            <input type="text" class="form-control bg-dark border-1 px-5" id="userInput" placeholder="Search for..." aria-label="Search" aria-describedby="addon-wrapping">
+            <span class=" bg-dark border-0 pt-2 px-2" type="submit"  ><i class="fas fa-search text-muted" ></i></span>
+          </form>
+        </div>
+      </li>
       <!--//-->
-      <div class="me-5">
-        <a class="text-decoration-none text-muted mx-4" href="./watchedList.html"> <i class="far fa-bookmark"></i>
-        <span>Watch List</span>
-        </a>
-        <a class="text-decoration-none text-muted" href="favList.html"> <i class="far fa-heart"></i>
-        <span>Favorate List</span>
-        </a>
-      </div>
+      <li class="nav-item me-5 ms-5 pt-2">
+        <div class="me-5 ms-5">
+          <a class="text-decoration-none text-muted mx-4" href="./watchedList.html"> <i class="far fa-bookmark"></i>
+          <span>Watch List</span>
+          <a class="text-decoration-none text-muted" href="favList.html"> <i class="far fa-heart"></i>
+          <span>Favorate List</span>
+          </a>
+        </div>
+      </li>
     </div>
   </nav>
-  <div class="container-fluid bg-darkGray">
-    <div>
-        <h1>Trending Movies</h1>
-        <!--<div class="row" id="Trending"></div>-->
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-    </div>
     
 
 
