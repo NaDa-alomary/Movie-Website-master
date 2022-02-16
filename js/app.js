@@ -43,13 +43,8 @@ function moviesCat(id,card){
 
 
 //------------------ Get Movies by search ------------------------
-<<<<<<< HEAD
 const searchBtn = document.getElementById("searchBtn");
 searchBtn.addEventListener("click",(event)=>{
-=======
-const form = document.querySelector("userInput");
-form.addEventListener("submit",(event)=>{
->>>>>>> 92f5dbfa01f4006b7d515674c991bac965d841ac
   event.preventDefault();
   let myInput = document.querySelector("#myInput").value;
   console.log(myInput);
@@ -86,7 +81,7 @@ axios
         <div class="card-body bg-dark">
           <a href="#" class="btn text-white"><i class="far fa-bookmark"></i></a>
           <a href="#" class="btn text-white"><i class="far fa-heart"></i></a>
-          <a href="#" class="btn text-white"id="detailsBox">Details</a>
+          <a href="#" class="btn text-white test"data-bs-toggle="modal" data-bs-target="#modalBox" onclick="MoviesDetails(${item.id})">Details</a>
         </div>
       </div>
       `
@@ -94,46 +89,45 @@ axios
 })
 
 //-----------------------model Detels---------------------------------
-//function MoviesDetails (movie_id){
-//  console. log(movie_id,"id");
-//  axios
-//  .get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=085893799663f0096f9d370baf640f22&append_to_response=videos,similar,credits`)
-//  .then ((res) =>{console. log(res. data)
-//  let item = res.data;
-//  let char = item.credits.cast;
-//  var charNames = [];
-//  for(var i = 0; i < 4; i++){
-//    charNames. push(char[i].name);
-//  }
-//  let genre = res.data.genres;
-//  var genreList = genre.map((genre) =>{
-//    return genre.name;
-//  });
-//  let video = res.data.videos.results;
-//  console.log (video);
-//  let similarMovies = res.data.similar.results;
-//  console. log(similarMovies);
-//  var similarMoviesList = similarMovies.map((element)=>{
-//    return element;
-//  })
-//  `
-//  <div class="modal-dialog modal-xl modal-dialog-centered "">
-//    <div class="modal-content bg-darkGray p-4 text-center">
-//      <h2>${item. title}
-//      <div type="button" class=" float-end " data-bs-dismiss="modal" aria-label="Close">
-//      <i class="fas fa-times white-text" aria-hidden="true"></i>
-//      </div>
-//      </h2>
-//      <p>${item.release_data} , ${genreList} </p>
-//      <p>${item.overview}</p>
-//      <p>Cast : ${charNames}</p>
-//      <div>
-//      document.getElementById("detailsBox").innerHTML=
-//    <p class="fs-3">vido Clip<p>
-//    <iframe height="400" width="100%"src="https://www.youtube.com/embed/${video[0].key}"</iframe>
-//    </div>
-//  </div>
-//  </div>`;
-//  })
-//  }
-//
+function MoviesDetails( movie_id){
+  //console. log(movie_id,"id");
+  axios
+  .get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=085893799663f0096f9d370baf640f22&append_to_response=videos,similar,credits`)
+  .then ((res) =>{console. log(res.data)
+  let item = res.data;
+  let char = item.credits.cast;
+  var charNames = [];
+  for(var i = 0; i < 4; i++){
+    charNames.push(char[i].name);
+  }
+  let genre = res.data.genres;
+  var genreList = genre.map((genre) =>{
+    return genre.name;
+  });
+  let video = res.data.videos.results;
+  console.log(video);
+  let similarMovies = res.data.similar.results;
+  console.log(similarMovies);
+  var similarMoviesList = similarMovies.map((element)=>{
+    return element;
+  })
+  document.getElementById("modalBox").innerHTML=
+  `
+  <div class="modal-dialog modal-xl modal-dialog-centered "">
+    <div class="modal-content bg-darkGray p-4 text-center">
+      <h2>${item.title}
+      <div type="button" class="float-end" data-bs-dismiss="modal" aria-label="Close">
+      <i class="fas fa-times white-text" aria-hidden="true"></i>
+      </div>
+      </h2>
+      <p>${item.release_data} | ${genreList} </p>
+      <p>${item.overview}</p>
+      <p>Cast:${charNames}</p>
+    <div>
+      <p>Video Clip<p>
+      <iframe height="400" width="100%"src="https://www.youtube.com/embed/${video[0].key}"</iframe>
+    </div>
+  </div>
+</div>`;
+})
+}
