@@ -2,6 +2,29 @@
     border-radius: 20px;
     color: white; 
 }
+span{
+    transition: 0.9s ease;
+}
 span:hover{
    color: white;
+}
+#style{
+    text-shadow: -2px -2px 0 #fc0155, 2px 2px 0 #04FBF6;
+}
+.row{
+    justify-content: center;
+}
+
+
+#style-cards{
+    transition: 0.8s ease;
+}
+#style-cards:hover{
+    transform: scale(1.1);
+}
+#cards{
+    transition: 0.8s ease;
+}
+#cards:hover{
+    transform: scale(1.1);
 }

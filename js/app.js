@@ -12,6 +12,8 @@ let actionCard= document.getElementById("Action");
 moviesCat(28,actionCard)
 let comedyCard= document.getElementById("Comedy");
 moviesCat(25,comedyCard)
+let AnimationCard= document.getElementById("Animation");
+moviesCat(16,AnimationCard)
 let adventureCard= document.getElementById("Adventure");
 moviesCat(12,adventureCard)
 let familyCard= document.getElementById("Family");
@@ -27,8 +29,8 @@ function moviesCat(id,card){
     console.log(response.data.results);
     card.innerHTML = response.data.results.map(item =>
         `
-        <div class="card my-3 mx-4" style="width: 18rem;">
-          <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="card-img-top" >
+        <div class="card bg-dark m-2  my-3 col-lg-3 col-md-4 col-sm-12" style="width:18rem; border-radius:20px;" id="cards">
+          <img src="https://image.tmdb.org/t/p/original/${item.poster_path}"class="mt-3" style="border-radius:20px;" id="style-cards">
           <div class="card-body bg-dark">
           <a><i class="far fa-bookmark test"onclick="WatchList(${item.id})"></i></a>
           <a><i class="far fa-heart mx-4 test"onclick="FavList(${item.id})"></i></a>
@@ -53,8 +55,8 @@ searchBtn.addEventListener("click",(event)=>{
   .then ((res) =>{ console.log(res.data.results)
     document.getElementById("searchedMovie").innerHTML = res.data.results.map(item=>
       `
-      <div class="card my-3 mx-4" style="width: 18rem;">
-        <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="card-img-top" >
+      <div class="card bg-dark m-2  my-3 col-lg-3 col-md-4 col-sm-12" style="width:18rem; border-radius:20px;" id="cards">
+        <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="mt-3" style="border-radius:20px;"id="style-cards" >
         <div class="card-body bg-dark">
         <a><i class="far fa-bookmark test"onclick="WatchList(${item.id})"></i></a>
         <a><i class="far fa-heart mx-4 test"onclick="FavList(${item.id})"></i></a>
@@ -76,8 +78,8 @@ axios
   console.log(response.data.results);
   document.getElementById("trend").innerHTML = response.data.results.map(item =>
       `
-      <div class="card my-3 mx-4" style="width: 18rem;">
-        <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="card-img-top" >
+      <div class="card bg-dark m-2 my-3  col-lg-3 col-md-4 col-sm-12" style="width:18rem; border-radius:20px;" id="cards">
+        <img src="https://image.tmdb.org/t/p/original/${item.poster_path}"class="mt-3" style="border-radius:20px;" id="style-cards" >
         <div class="card-body bg-dark">
           <a><i class="far fa-bookmark test"onclick="WatchList(${item.id})"></i></a>
           <a><i class="far fa-heart mx-4 test"onclick="FavList(${item.id})"></i></a>
@@ -93,7 +95,7 @@ function MoviesDetails( movie_id){
   //console. log(movie_id,"id");
   axios
   .get(`https://api.themoviedb.org/3/movie/${movie_id}?api_key=085893799663f0096f9d370baf640f22&append_to_response=videos,similar,credits`)
-  .then ((res) =>{console. log(res.data)
+  .then ((res) =>{console.log(res.data)
   let item = res.data;
   let char = item.credits.cast;
   var charNames = [];
