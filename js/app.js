@@ -1,7 +1,7 @@
 const apiKey= `085893799663f0096f9d370baf640f22`;
 const imgPath = "https://image.tmdb.org/t/p/w342";
-let watchedList=[];
-let favoriteList=[];
+let watcheCards=[];
+let favCards=[];
 
 
 
@@ -30,9 +30,9 @@ function moviesCat(id,card){
         <div class="card my-3 mx-4" style="width: 18rem;">
           <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="card-img-top" >
           <div class="card-body bg-dark">
-            <a href="#" class="btn text-white"><i class="far fa-bookmark"></i></a>
-            <a href="#" class="btn text-white"><i class="far fa-heart"></i></a>
-            <a href="#" class="btn text-white">Details</a>
+          <a><i class="far fa-bookmark test"onclick="WatchList(${item.id})"></i></a>
+          <a><i class="far fa-heart mx-4 test"onclick="FavList(${item.id})"></i></a>
+          <a href="#" class="btn text-white test"data-bs-toggle="modal" data-bs-target="#modalBox" onclick="MoviesDetails(${item.id})">Details</a>
           </div>
         </div>
         `
@@ -56,9 +56,9 @@ searchBtn.addEventListener("click",(event)=>{
       <div class="card my-3 mx-4" style="width: 18rem;">
         <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="card-img-top" >
         <div class="card-body bg-dark">
-          <a href="#" class="btn text-white"><i class="far fa-bookmark"></i></a>
-          <a href="#" class="btn text-white"><i class="far fa-heart"></i></a>
-          <a href="#" class="btn text-white">Details</a>
+        <a><i class="far fa-bookmark test"onclick="WatchList(${item.id})"></i></a>
+        <a><i class="far fa-heart mx-4 test"onclick="FavList(${item.id})"></i></a>
+        <a href="#" class="btn text-white test"data-bs-toggle="modal" data-bs-target="#modalBox" onclick="MoviesDetails(${item.id})">Details</a>
         </div>
       </div>
       </div>
@@ -79,8 +79,8 @@ axios
       <div class="card my-3 mx-4" style="width: 18rem;">
         <img src="https://image.tmdb.org/t/p/original/${item.poster_path}" class="card-img-top" >
         <div class="card-body bg-dark">
-          <a href="#" class="btn text-white"><i class="far fa-bookmark"></i></a>
-          <a href="#" class="btn text-white"><i class="far fa-heart"></i></a>
+          <a><i class="far fa-bookmark test"onclick="WatchList(${item.id})"></i></a>
+          <a><i class="far fa-heart mx-4 test"onclick="FavList(${item.id})"></i></a>
           <a href="#" class="btn text-white test"data-bs-toggle="modal" data-bs-target="#modalBox" onclick="MoviesDetails(${item.id})">Details</a>
         </div>
       </div>
@@ -130,4 +130,24 @@ function MoviesDetails( movie_id){
   </div>
 </div>`;
 })
+}
+//////////////////////////////////////////////////////
+function FavList(movie_id){
+  if(!favCards.includes(movie_id)){
+    favCards.push(movie_id);
+    console.log(favCards,'id-FavList');
+    localStorage.setItem("favCards", JSON.stringify(favCards));
+    console.log(localStorage.favCards);
+  }
+}
+
+
+//////////////////////////////////////////////////////
+function WatchList(movie_id){
+  if(!watcheCards.includes(movie_id)){
+    watcheCards.push(movie_id);
+    console.log(watcheCards,'id-FavList');
+    localStorage.setItem("watcheCards", JSON.stringify(watcheCards));
+    console.log(localStorage.watcheCards);
+  }
 }
