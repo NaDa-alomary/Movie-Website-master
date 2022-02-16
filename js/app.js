@@ -146,7 +146,7 @@ function FavList(movie_id){
 function WatchList(movie_id){
   if(!watcheCards.includes(movie_id)){
     watcheCards.push(movie_id);
-    console.log(watcheCards,'id-FavList');
+    console.log(watcheCards,'id-WatchList');
     localStorage.setItem("watcheCards", JSON.stringify(watcheCards));
     console.log(localStorage.watcheCards);
   }
